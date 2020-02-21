@@ -449,4 +449,8 @@
 
     <!-- Whether key handler sends intent when changing slider position -->
     <string name="config_alertSliderIntent">com.derp.device.DeviceSettings.UPDATE_SLIDER_POSITION</string>
+    
+    <!-- Whether device has physical tri state switch -->
+    <bool name="config_hasAlertSlider">true</bool>
+
 </resources>
