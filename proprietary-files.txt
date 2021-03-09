@@ -65,6 +65,7 @@ vendor/lib/hw/vendor.qti.hardware.audiohalext@1.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so
 vendor/lib/btaudio_offload_if.so
+vendor/lib/liba2dpoffload.so
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
@@ -221,6 +222,7 @@ vendor/lib/libarcsoft_dualcam_refocus_preview.so
 vendor/lib/libarcsoft_dualcam_refocus_right.so
 vendor/lib/libarcsoft_dualcam_refocus_uw.so
 vendor/lib/libarcsoft_hdrplus_hvx_stub.so
+vendor/lib/libarcsoft_portrait_distortion_correction.so
 vendor/lib/libarcsoft_super_night_raw.so
 vendor/lib/libcamera_nn_stub.so
 vendor/lib/libcamxfdalgov7.so
@@ -233,6 +235,7 @@ vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libcvface_api.so
 vendor/lib/libfastcrc.so
 vendor/lib/libfastrpc_utf_stub.so
+vendor/lib/libgui_vendor.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmorpho_image_refiner.so
@@ -245,6 +248,7 @@ vendor/lib/libsns_low_lat_stream_stub.so
 vendor/lib/libsnsapi.so
 vendor/lib/libsnsdiaglog.so
 vendor/lib/libSonyIMX471RmscLibrary.so
+vendor/lib/libstdc++.so
 vendor/lib/libSuperSensor.so
 vendor/lib/libSuperSensorFallback.so
 vendor/lib/libSuperSensorProcessor.so
@@ -330,6 +334,7 @@ vendor/lib64/libarcsoft_hdrplus_hvx_stub.so
 vendor/lib64/libarcsoft_high_dynamic_range.so
 vendor/lib64/libarcsoft_high_dynamic_range_couple.so
 vendor/lib64/libarcsoft_piczoom.so
+vendor/lib64/libarcsoft_portrait_distortion_correction.so
 vendor/lib64/libarcsoft_smart_denoise.so
 vendor/lib64/libarcsoft_super_night_raw.so
 vendor/lib64/libcamera_nn_stub.so
@@ -341,6 +346,7 @@ vendor/lib64/libcamxswprocessalgo.so
 vendor/lib64/libcamxtintlessalgo.so
 vendor/lib64/libcom.qti.chinodeutils.so
 vendor/lib64/libcvface_api.so
+vendor/lib64/libDxHdcp.so
 vendor/lib64/libfastrpc_utf_stub.so
 vendor/lib64/libmmcamera_faceproc.so
 vendor/lib64/libmmcamera_faceproc2.so
@@ -356,6 +362,7 @@ vendor/lib64/libsnsdiaglog.so
 vendor/lib64/libSonyIMX471RmscLibrary.so
 vendor/lib64/libst_relighting.so
 vendor/lib64/libstblur_capture_api.so
+vendor/lib64/libstdc++.so
 vendor/lib64/libSuperSensor.so
 vendor/lib64/libSuperSensorFallback.so
 vendor/lib64/libSuperSensorProcessor.so
@@ -446,11 +453,7 @@ vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
 vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
 vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc
 vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
--vendor/lib/vendor.qti.hardware.capabilityconfigstore@1.0.so
--vendor/lib/libplatformconfig.so
 vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
--vendor/lib64/vendor.qti.hardware.capabilityconfigstore@1.0.so
--vendor/lib64/libplatformconfig.so
 
 # CVP
 vendor/bin/hw/vendor.qti.hardware.cvp@1.0-service
@@ -689,8 +692,8 @@ vendor/lib/hw/vendor.qti.gnss@3.0-impl.so
 vendor/lib/vendor.qti.gnss@3.0-service.so
 vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so
 vendor/lib64/vendor.qti.gnss@3.0-service.so
-vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml
-vendor/etc/vintf/manifest/android.hardware.gnss@2.0-service-qti.xml
+-vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml
+-vendor/etc/vintf/manifest/android.hardware.gnss@2.0-service-qti.xml
 vendor/bin/garden_app
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
@@ -1041,8 +1044,8 @@ vendor/lib64/libhexagon_nn_stub.so
 -app/NxpSecureElement/NxpSecureElement.apk
 etc/nfcee_access.xml
 etc/permissions/com.nxp.nfc.xml
-framework/com.nxp.nfc.jar
-lib64/libnxpnfc-nci.so
+framework/com.nxp.nfc.jar|9299477fdb0c87845d71c135eedd4ca1d3e6097c
+lib64/libnxpnfc-nci.so|ecbd274d2bb19552137b437360049b88395ebba0
 lib64/libnxpnfc_nci_jni.so
 vendor/bin/hw/android.hardware.nfc@1.2-service
 vendor/bin/hw/android.hardware.secure_element@1.1-service
@@ -1518,7 +1521,7 @@ vendor/lib/libthermalclient.so
 vendor/lib64/libthermalclient.so
 
 # Time services
--vendor/app/TimeService/TimeService.apk;PRESIGNED
+-vendor/app/TimeService/TimeService.apk
 vendor/bin/time_daemon
 vendor/lib64/libtime_genoff.so
 
@@ -1539,6 +1542,10 @@ vendor/firmware/tp/LIMIT_19801_SY761.img
 vendor/firmware/tp/LIMIT_19801_SY761_NEW.img
 vendor/firmware/tp/LIMIT_19861_SY761.img
 vendor/firmware/tp/LIMIT_19861_SY761_NEW.img
+
+# Translation
+vendor/lib/vendor.oneplus.hardware.translation@1.0.so
+vendor/lib64/vendor.oneplus.hardware.translation@1.0.so
 
 # Trusted User Interface
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
@@ -1634,6 +1641,14 @@ vendor/firmware/ring_T-Jingle.bin
 vendor/firmware/shuntai24k_rtp.bin
 vendor/firmware/wentai24k_rtp.bin
 
+# Vibrator HAL
+vendor/lib/hw/vibrator.default.so
+vendor/lib/hw/android.hardware.vibrator@1.0-impl.so
+vendor/lib64/hw/vibrator.default.so
+vendor/lib64/hw/android.hardware.vibrator@1.0-impl.so
+vendor/etc/init/android.hardware.vibrator@1.0-service.rc
+vendor/bin/hw/android.hardware.vibrator@1.0-service
+
 # WiFi
 vendor/bin/hw/vendor.oneplus.hardware.wifi@1.0-service
 vendor/bin/cnss-daemon
@@ -1710,7 +1725,6 @@ lib64/libwfduibcsrcinterface.so
 product/lib/vendor.qti.hardware.wifidisplaysession@1.0.so
 product/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
 vendor/bin/wfdhdcphalservice
-vendor/bin/wifidisplayhalservice
 vendor/etc/init/android.hardware.drm@1.1-service.wfdhdcp.rc
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
 vendor/lib/libDxHdcp.so

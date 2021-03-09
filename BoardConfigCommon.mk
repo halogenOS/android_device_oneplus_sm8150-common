@@ -40,6 +40,7 @@ BOARD_BOOT_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
 BOARD_KERNEL_CMDLINE += androidboot.vbmeta.avb_version=1.0
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
@@ -90,9 +91,7 @@ USE_XML_AUDIO_POLICY_CONF := 1
 # Camera
 TARGET_USES_QTI_CAMERA_DEVICE := true
 USE_DEVICE_SPECIFIC_CAMERA := true
-
-# Charger
-BOARD_CHARGER_ENABLE_SUSPEND := true
+TARGET_CAMERA_NEEDS_CLIENT_INFO := true
 
 # CNE and DPM
 BOARD_USES_QCNE := true
@@ -144,9 +143,6 @@ DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
 
-# Media
-TARGET_PROVIDES_LIBPLATFORMCONFIG := true
-
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
 
@@ -182,7 +178,7 @@ TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD := true
 VENDOR_SECURITY_PATCH := 2021-01-01
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
+include device/qcom/sepolicy_vndr/SEPolicy.mk
 
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/public
@@ -208,4 +204,5 @@ WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
 WIFI_DRIVER_STATE_OFF := "OFF"
 WIFI_DRIVER_STATE_ON := "ON"
 WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
+WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X

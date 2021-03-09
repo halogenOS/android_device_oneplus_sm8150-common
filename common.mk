@@ -18,11 +18,6 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
-PRODUCT_ENFORCE_RRO_TARGETS := *
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage/lineage-sdk \
-    $(LOCAL_PATH)/overlay-lineage/packages/apps/Snap
-
 # A/B
 AB_OTA_UPDATER := true
 
@@ -137,9 +132,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/bluetooth_hearing_aid_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_hearing_aid_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
+    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml
 
@@ -189,6 +184,7 @@ PRODUCT_PACKAGES += \
     init.oem.debug.rc \
     init.oem.engineermode.sh \
     init.oem.rc \
+    init.opcamera.rc \
     init.qcom.class_core.sh \
     init.qcom.coex.sh \
     init.qcom.crashdata.sh \
@@ -207,13 +203,17 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.target.rc \
     kmemleak.sh \
-    ueventd.rc \
+    ueventd.qcom.rc \
     vendor.oem_ftm.rc \
     vendor.oem_ftm_svc_disable.rc
 
 # Cryptfshw
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.cryptfshw@1.0.vendor
+
+# Component overrides
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
 
 # Display
 PRODUCT_PACKAGES += \
@@ -236,15 +236,11 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.allocator@1.0.vendor \
     vendor.qti.hardware.display.mapper@1.0.vendor
 
-# Doze
-PRODUCT_PACKAGES += \
-    OnePlusDoze
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
-    android.hardware.drm@1.2-service.clearkey
+    android.hardware.drm@1.3-service.clearkey
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -276,7 +272,11 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.base@1.0_system \
     android.hidl.manager@1.0 \
-    android.hidl.manager@1.0_system
+    android.hidl.manager@1.0_system \
+    libhidltransport \
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor
 
 # HotwordEnrollement app permissions
 PRODUCT_COPY_FILES += \
@@ -350,6 +350,7 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libavservices_minijail_vendor \
     libc2dcolorconvert \
     libcodec2_hidl@1.0.vendor \
     libcodec2_vndk.vendor \
@@ -366,7 +367,12 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service-qti
+    android.hardware.power-service-qti
+
+# Protobuf
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full-vendorcompat \
+    libprotobuf-cpp-lite-vendorcompat
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -398,6 +404,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     $(LOCAL_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
+    $(LOCAL_PATH)/seccomp/codec2.vendor.base.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.base.policy \
     $(LOCAL_PATH)/seccomp/codec2.vendor.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.ext.policy
 
 # Sensors
@@ -438,15 +445,19 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-ims.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-ims.xml
 
+# Prebuilts
+PRODUCT_PACKAGES += \
+    OnePlusCamera \
+    OnePlusGallery \
+    OnePlusCameraService
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/etc/permissions/privapp-permissions-oem-system.xml:system/etc/permissions/privapp-permissions-oem-system.xml \
+    $(LOCAL_PATH)/prebuilts/etc/sysconfig/hiddenapi-package-whitelist-oneplus.xml:system/etc/sysconfig/hiddenapi-package-whitelist-oneplus.xml
+
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
-
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl \
-    android.hardware.thermal@1.0-service \
-    thermal.msmnile
 
 # Touch
 PRODUCT_PACKAGES += \
@@ -477,6 +488,11 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service \
 
+# VNDK
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libcutils-v29.so \
+    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libcutils-v29.so
+
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
@@ -489,6 +505,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi.supplicant@2.0.vendor \
     vendor.qti.hardware.wifi.supplicant@2.1.vendor \
     wifi-mac-generator \
+    WifiOverlay \
     wpa_supplicant \
     wpa_supplicant.conf
 
