@@ -138,4 +138,6 @@
     <!-- Screen off UDFPS -->
     <bool name="config_supportScreenOffUdfps">true</bool>
 
+    <!-- Defines custom OEM sensor for pocket detection. -->
+    <string name="config_pocketJudgeVendorProximitySensorName">oneplus.sensor.infrared.proximity</string>
 </resources>
