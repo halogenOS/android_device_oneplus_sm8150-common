@@ -43,7 +43,6 @@ import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.TwoStatePreference;
 
-import com.android.internal.util.derp.FileUtils;
 import com.derp.device.DeviceSettings.Constants;
 
 public class DeviceSettings extends PreferenceFragment

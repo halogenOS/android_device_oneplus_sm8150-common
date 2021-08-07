@@ -25,8 +25,6 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import androidx.preference.PreferenceManager;
 
-import com.derp.device.DeviceSettings.TouchscreenGestureSettings;
-
 public class Startup extends BroadcastReceiver {
 
     private static final String TAG = "BootReceiver";
@@ -51,7 +49,6 @@ public class Startup extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
         boolean enabled = false;
-        TouchscreenGestureSettings.MainSettingsFragment.restoreTouchscreenGestureStates(context);
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         VibratorStrengthPreference.restore(context);
     }
