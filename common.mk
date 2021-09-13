@@ -355,7 +355,7 @@ PRODUCT_PACKAGES += \
     vendor.nxp.nxpnfc@1.0:64
 
 # OnePlus apps
-$(call inherit-product, vendor/oneplus/apps/guacamole/config.mk)
+#$(call inherit-product, vendor/oneplus/apps/guacamole/config.mk)
 
 # OMX
 PRODUCT_PACKAGES += \
