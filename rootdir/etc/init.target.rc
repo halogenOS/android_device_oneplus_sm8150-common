@@ -106,7 +106,7 @@ on post-fs-data
     mkdir /data/vendor/hbtp 0750 system system
     mkdir /data/vendor/nnhal 0700 system system
 
-on early-boot
+on boot
     start vendor.sensors
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
@@ -132,6 +132,9 @@ on boot
     # chris.gao@SYSTEM, 2019/3/2, [GCE-9966] Optimize surfaceflinger
     write /dev/cpuset/display/cpus 4-7
     # endif VENDOR_EDIT
+
+# make the selinux kernel policy world-readable
+    chmod 0444 /sys/fs/selinux/policy
 
 # Add a cpuset for the camera daemon
 # We want all cores for camera
@@ -188,10 +191,6 @@ on boot
     restorecon /sys/kernel/debug/regmap/0-0035/registers
     restorecon /sys/kernel/debug/regmap/0-0042/registers
     restorecon /sys/kernel/debug/regmap/tavil-slim-pgd/registers
-
-    # Reduce default vibrator gain from 0x80 to 0x55,
-    # also allow gain customization via persistent property
-    write /sys/class/leds/vibrator/gain ${persist.vendor.vib.gain:-0x55}
 
 on property:vendor.display.lcd_density=560
    setprop dalvik.vm.heapgrowthlimit 256m
