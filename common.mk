@@ -553,3 +553,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.has_wide_color_display=true \
     ro.surface_flinger.use_color_management=true \
     ro.surface_flinger.wcg_composition_dataspace=143261696
+
+# Tri-state keys
+PRODUCT_PACKAGES += \
+	KeyHandler \
+	tri-state-key_daemon
