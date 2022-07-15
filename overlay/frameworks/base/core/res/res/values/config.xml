@@ -468,4 +468,8 @@
      <!-- Shows the required view for Screen OFF FOD -->
     <bool name="config_supportsScreenOffUdfps">true</bool>
 
+    <!-- Enable Mic/Cam Toggle in QuickSettings -->
+    <bool name="config_supportsMicToggle">true</bool>
+    <bool name="config_supportsCamToggle">true</bool>
+
 </resources>
