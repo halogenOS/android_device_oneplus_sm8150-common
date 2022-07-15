@@ -277,6 +277,16 @@ on boot
     chmod 0666 /proc/tzdbg/qsee_log
     chmod 0666 /proc/tzdbg/tz_log
 
+    # Tri-State-Key
+    chown system system /proc/tri-state-key/keyCode_top
+    chmod 0660 /proc/tri-state-key/keyCode_top
+
+    chown system system /proc/tri-state-key/keyCode_middle
+    chmod 0660 /proc/tri-state-key/keyCode_middle
+
+    chown system system /proc/tri-state-key/keyCode_bottom
+    chmod 0660 /proc/tri-state-key/keyCode_bottom
+
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/vendor/misc 01771 system system
