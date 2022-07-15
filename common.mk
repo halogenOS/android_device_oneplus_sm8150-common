@@ -411,7 +411,7 @@ PRODUCT_PACKAGES += \
     libril_shim \
     libshim_imsvidecoder \
     librmnetctl \
-    libxml2 
+    libxml2
 
 # SoC
 PROCESSOR_MODEL := SM8150
@@ -557,4 +557,5 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Tri-state keys
 PRODUCT_PACKAGES += \
 	KeyHandler \
-	tri-state-key_daemon
+	tri-state-key_daemon \
+    tri-state-key_daemon.vendor
