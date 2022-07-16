@@ -22,7 +22,9 @@ import android.provider.Settings
 import android.view.KeyEvent
 import androidx.preference.PreferenceManager
 
-class KeyHandler : Service() {
+import com.android.internal.os.DeviceKeyHandler
+
+class KeyHandler : Service(), DeviceKeyHandler {
     private lateinit var audioManager: AudioManager
     private lateinit var notificationManager: NotificationManager
     private lateinit var vibrator: Vibrator
@@ -65,6 +67,10 @@ class KeyHandler : Service() {
                 }
             }
         }
+    }
+
+    fun handleKeyEvent(event: KeyEvent): KeyEvent {
+        return event
     }
 
     override fun onCreate() {
