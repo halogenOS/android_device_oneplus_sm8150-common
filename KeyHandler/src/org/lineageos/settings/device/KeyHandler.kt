@@ -69,7 +69,7 @@ class KeyHandler : Service(), DeviceKeyHandler {
         }
     }
 
-    fun handleKeyEvent(event: KeyEvent): KeyEvent {
+    override fun handleKeyEvent(event: KeyEvent): KeyEvent {
         return event
     }
 
