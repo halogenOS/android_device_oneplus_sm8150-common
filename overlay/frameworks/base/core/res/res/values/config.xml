@@ -347,7 +347,7 @@
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
-        <item>20</item>
+        <item>10</item>
     </integer-array>
 
     <integer-array name="config_defaultNotificationVibePattern">
@@ -466,7 +466,7 @@
     <bool name="config_supportsInDisplayFingerprint">true</bool>
 
      <!-- Shows the required view for Screen OFF FOD -->
-    <bool name="config_supportsScreenOffUdfps">true</bool>
+    <bool name="config_supportsScreenOffUdfps">false</bool>
 
     <!-- Enable Mic/Cam Toggle in QuickSettings -->
     <bool name="config_supportsMicToggle">true</bool>
@@ -480,4 +480,6 @@
          Must be in the range specified by minimum and maximum. -->
     <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.5</item>
 
+     <!-- Allow devices override audio panel location to the left side -->
+    <bool name="config_audioPanelOnLeftSide">true</bool>
 </resources>
