@@ -39,6 +39,8 @@ vendor.display.enable_rotator_ui=1
 # IO Prefetcher
 vendor.iop.enable_prefetch_ofr=1
 vendor.iop.enable_uxe=1
+persist.device_config.runtime_native_boot.iorap_readahead_enable=true
+iorapd.perfetto.enable=true
 
 # Media
 av.offload.enable=true
