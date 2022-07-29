@@ -5,3 +5,6 @@ allow init adsprpcd_file:file mounton;
 
 allow init op1_file:dir mounton;
 allow init op2_file:dir mounton;
+
+dontaudit init system_file:dir relabelfrom;
+dontaudit init system_file:file relabelfrom;
