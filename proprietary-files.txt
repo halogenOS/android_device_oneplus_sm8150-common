@@ -586,7 +586,7 @@ vendor/firmware/ipa_uc.mdt
 
 # IRQ balance
 vendor/bin/msm_irqbalance
-vendor/etc/msm_irqbalance.conf
+vendor/etc/msm_irqbalance.conf|ba85b50786a3c54115f4be921c27c9f5e87f839e
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
