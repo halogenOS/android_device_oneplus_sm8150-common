@@ -50,9 +50,11 @@
         <!-- Additional button settings (Button settings) -->
         <activity
             android:name=".ButtonSettingsActivity"
+            android:theme="@style/Theme.SubSettingsBase"
             android:label="@string/button_panel_title"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>
             <meta-data
