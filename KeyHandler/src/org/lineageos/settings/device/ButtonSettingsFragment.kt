@@ -12,7 +12,7 @@ import androidx.preference.PreferenceFragment
 class ButtonSettingsFragment : PreferenceFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.button_panel)
-        activity.actionBar!!.setDisplayHomeAsUpEnabled(true)
+        activity.actionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun addPreferencesFromResource(preferencesResId: Int) {

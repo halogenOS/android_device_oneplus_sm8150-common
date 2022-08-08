@@ -7,9 +7,11 @@ package org.lineageos.settings.device
 
 import android.R
 import android.os.Bundle
+import android.preference.PreferenceActivity;
+
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity
 
-class ButtonSettingsActivity : CollapsingToolbarBaseActivity() {
+class ButtonSettingsActivity : PreferenceActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fragmentManager.beginTransaction().replace(
