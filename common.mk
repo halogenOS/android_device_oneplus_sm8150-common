@@ -559,3 +559,5 @@ PRODUCT_PACKAGES += \
 	KeyHandler \
 	tri-state-key_daemon \
     tri-state-key_daemon.vendor
+
+PRODUCT_PACKAGES += OnePlusExtraSettings
