@@ -18,6 +18,7 @@
           android:sharedUserId="android.uid.system"
           package="org.halogenos.settings.device.extra">
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="custom.permission.RECEIVE_BATTERY_CHARGE_UPDATES" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -29,8 +30,7 @@
             android:name="org.halogenos.settings.device.extra.BatteryReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <action android:name="custom.intent.action.BATTERY_CHARGE_CHANGED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
