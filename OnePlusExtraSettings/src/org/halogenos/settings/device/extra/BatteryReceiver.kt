@@ -9,11 +9,14 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.BatteryManager
+import android.os.SystemProperties
 import android.util.Log
 
 import java.io.File
 
-const val DEFAULT_FILE = "/sys/class/power_supply/battery/charging_enabled"
+private const val TAG = "OnePlusBatteryReceiver"
+private const val SYSPROP_CHARGE = "vendor.battery.charge_enable"
+
 class BatteryReceiver : BroadcastReceiver() {
 
     fun getBatteryLevel(batteryIntent: Intent): Int {
@@ -28,13 +31,18 @@ class BatteryReceiver : BroadcastReceiver() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
+        Log.i(TAG, "Received battery change intent")
         val batteryLevel = getBatteryLevel(intent)
         val currentStatus = intent.getIntExtra(BatteryManager.EXTRA_STATUS, BatteryManager.BATTERY_STATUS_UNKNOWN)
+        Log.i(TAG, "Batterylevel: ${batteryLevel}, status: ${currentStatus}")
         if (currentStatus == BatteryManager.BATTERY_STATUS_CHARGING) {
+            Log.i(TAG, "Battery is charging")
             if (getBatteryLevel(intent) >= 80) {
-                File(DEFAULT_FILE).writeText("0")
+                Log.i(TAG, ">= 80, disabling charge")
+                SystemProperties.set(SYSPROP_CHARGE, "0")
             } else {
-                File(DEFAULT_FILE).writeText("1")
+                Log.i(TAG, "< 80, enabling charge")
+                SystemProperties.set(SYSPROP_CHARGE, "1")
             }
         }
     }
