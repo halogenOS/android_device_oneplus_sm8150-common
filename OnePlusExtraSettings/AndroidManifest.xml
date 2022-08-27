@@ -17,8 +17,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           android:sharedUserId="android.uid.system"
           package="org.halogenos.settings.device.extra">
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="custom.permission.RECEIVE_BATTERY_CHARGE_UPDATES" />
 
     <application
         android:icon="@mipmap/ic_launcher"

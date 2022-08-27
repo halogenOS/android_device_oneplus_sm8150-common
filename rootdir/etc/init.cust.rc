@@ -1,0 +1,9 @@
+on property:ro.boot.product.hardware.sku=9
+    setprop persist.radio.multisim.config ssss
+    setprop persist.vendor.radio.uicc_se_enabled true
+
+on property:vendor.battery.charge_enable=0
+    write /sys/class/power_supply/battery/charging_enabled 0
+
+on property:vendor.battery.charge_enable=1
+    write /sys/class/power_supply/battery/charging_enabled 1
