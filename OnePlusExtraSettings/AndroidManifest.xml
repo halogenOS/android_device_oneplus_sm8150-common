@@ -33,21 +33,17 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".ExtraSettingsActivity"
-            android:theme="@style/Theme.SubSettingsBase"
-            android:label="@string/extra_settings"
-            android:exported="true">
+        <service
+            android:name=".BatteryChargeLimitTileService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="Battery Charging Limit"
+            android:icon="@drawable/ic_battery"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+                <action
+                    android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
-            <meta-data
-                android:name="com.android.settings.icon"
-                android:resource="@drawable/ic_settings_device" />
-            <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.homepage" />
-        </activity>
+        </service>
     </application>
 </manifest>

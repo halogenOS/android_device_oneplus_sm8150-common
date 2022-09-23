@@ -14,12 +14,10 @@ import android.util.Log
 
 import java.io.File
 
-private const val TAG = "OnePlusBatteryReceiver"
-private const val SYSPROP_CHARGE = "sys.battery.charge_enable"
+const val TAG = "OnePlusBatteryReceiver"
+const val SYSPROP_CHARGE = "sys.battery.charge_enable"
 
-class BatteryReceiver : BroadcastReceiver() {
-
-    fun getBatteryLevel(batteryIntent: Intent): Int {
+fun getBatteryLevel(batteryIntent: Intent): Int {
         val level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
         val scale = batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
 
@@ -30,23 +28,32 @@ class BatteryReceiver : BroadcastReceiver() {
         }
     }
 
+class BatteryReceiver : BroadcastReceiver() {
+
+    val Context.percentage get()=getSharedPreferences("PREFERENCES",Context.MODE_PRIVATE).getInt("percentage", 0)
+
+    
+
     override fun onReceive(context: Context, intent: Intent) {
+        if (context.percentage == 0) {
+            return
+        }
         Log.i(TAG, "Received battery change intent")
         val batteryLevel = getBatteryLevel(intent)
         val currentStatus = intent.getIntExtra(BatteryManager.EXTRA_STATUS, BatteryManager.BATTERY_STATUS_UNKNOWN)
         Log.i(TAG, "Batterylevel: ${batteryLevel}, status: ${currentStatus}")
         if (currentStatus == BatteryManager.BATTERY_STATUS_CHARGING) {
             Log.i(TAG, "Battery is charging")
-            if (getBatteryLevel(intent) >= 80) {
-                Log.i(TAG, ">= 80, disabling charge")
+            if (getBatteryLevel(intent) >= context.percentage) {
+                Log.i(TAG, ">= ${context.percentage}, disabling charge")
                 SystemProperties.set(SYSPROP_CHARGE, "0")
             } else {
-                Log.i(TAG, "< 80, enabling charge")
+                Log.i(TAG, "< ${context.percentage}, enabling charge")
                 SystemProperties.set(SYSPROP_CHARGE, "1")
             }
         }
-        else if (getBatteryLevel(intent) < 80) {
-            Log.i(TAG, "<80, enabling charge")
+        else if (getBatteryLevel(intent) < context.percentage - 2) {
+            Log.i(TAG, "<${context.percentage}, enabling charge")
             SystemProperties.set(SYSPROP_CHARGE, "1")
         }
     }
