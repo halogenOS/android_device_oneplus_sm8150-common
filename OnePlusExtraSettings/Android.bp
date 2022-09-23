@@ -7,9 +7,11 @@ android_app {
     certificate: "platform",
     platform_apis: true,
     privileged: true,
+    system_ext_specific: true,
 
     defaults: [
         "SettingsLibDefaults",
+        "platform_app_defaults",
     ],
 
     static_libs: [

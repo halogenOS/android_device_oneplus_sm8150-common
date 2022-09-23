@@ -15,7 +15,7 @@ import android.util.Log
 import java.io.File
 
 private const val TAG = "OnePlusBatteryReceiver"
-private const val SYSPROP_CHARGE = "vendor.battery.charge_enable"
+private const val SYSPROP_CHARGE = "sys.battery.charge_enable"
 
 class BatteryReceiver : BroadcastReceiver() {
 
@@ -44,6 +44,10 @@ class BatteryReceiver : BroadcastReceiver() {
                 Log.i(TAG, "< 80, enabling charge")
                 SystemProperties.set(SYSPROP_CHARGE, "1")
             }
+        }
+        else if (getBatteryLevel(intent) < 80) {
+            Log.i(TAG, "<80, enabling charge")
+            SystemProperties.set(SYSPROP_CHARGE, "1")
         }
     }
 }
