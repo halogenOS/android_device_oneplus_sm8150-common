@@ -52,7 +52,7 @@ class BatteryReceiver : BroadcastReceiver() {
                 SystemProperties.set(SYSPROP_CHARGE, "1")
             }
         }
-        else if (getBatteryLevel(intent) < context.percentage - 2) {
+        else if (getBatteryLevel(intent) < context.percentage - 1) {
             Log.i(TAG, "<${context.percentage}, enabling charge")
             SystemProperties.set(SYSPROP_CHARGE, "1")
         }
