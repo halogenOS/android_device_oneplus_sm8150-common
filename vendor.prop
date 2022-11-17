@@ -194,3 +194,7 @@ vendor.usb.use_gadget_hal=0
 
 # Zygote
 zygote.critical_window.minute=10
+
+# Fling velocities
+ro.min.fling_velocity=140
+ro.max.fling_velocity=20000
