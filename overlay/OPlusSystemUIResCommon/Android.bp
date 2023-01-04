@@ -5,5 +5,9 @@
 
 runtime_resource_overlay {
     name: "OPlusSystemUIResCommon",
+<<<<<<< HEAD
     vendor: true,
+=======
+    device_specific: true,
+>>>>>>> LineageOS/lineage-20
 }
