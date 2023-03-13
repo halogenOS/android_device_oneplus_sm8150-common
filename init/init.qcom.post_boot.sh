@@ -5313,7 +5313,7 @@ case "$target" in
 		echo 100 > /proc/sys/kernel/sched_group_upmigrate
 		echo 10 > /proc/sys/kernel/sched_group_downmigrate
 
-		echo 0-3 > /dev/cpuset/background/cpus
+		echo 0-1 > /dev/cpuset/background/cpus
 		echo 0-3 > /dev/cpuset/system-background/cpus
 
 
