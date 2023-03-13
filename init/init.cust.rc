@@ -3,7 +3,7 @@ on property:ro.boot.product.hardware.sku=9
     setprop persist.vendor.radio.uicc_se_enabled true
 
 on property:sys.battery.charge_enable=0
-    write /sys/class/power_supply/battery/charging_enabled 0
+    write /sys/class/power_supply/battery/mmi_charging_enable 0
 
 on property:sys.battery.charge_enable=1
-    write /sys/class/power_supply/battery/charging_enabled 1
+    write /sys/class/power_supply/battery/mmi_charging_enable 1
