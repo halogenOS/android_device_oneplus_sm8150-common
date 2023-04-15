@@ -56,9 +56,9 @@ class BatteryChargeLimitTileService : TileService() {
                 qsTile.subtitle = null
             }
         }
+        val resumePercentage = percentage - 2
 
         if (percentage != 0) {
-
             val intent: Intent = IntentFilter(Intent.ACTION_BATTERY_CHANGED).let { ifilter ->
                 registerReceiver(null, ifilter)
             }!!
@@ -76,7 +76,7 @@ class BatteryChargeLimitTileService : TileService() {
                     SystemProperties.set(SYSPROP_CHARGE, "1")
                 }
             }
-            else if (getBatteryLevel(intent) < percentage - 2) {
+            else if (getBatteryLevel(intent) < resumePercentage) {
                 Log.i(TAG, "<${percentage}, enabling charge")
                 SystemProperties.set(SYSPROP_CHARGE, "1")
             }

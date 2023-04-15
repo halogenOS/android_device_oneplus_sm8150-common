@@ -31,8 +31,7 @@ fun getBatteryLevel(batteryIntent: Intent): Int {
 class BatteryReceiver : BroadcastReceiver() {
 
     val Context.percentage get()=getSharedPreferences("PREFERENCES",Context.MODE_PRIVATE).getInt("percentage", 0)
-
-    
+    val Context.resumePercentage get() = percentage - 2
 
     override fun onReceive(context: Context, intent: Intent) {
         if (context.percentage == 0) {
@@ -52,7 +51,7 @@ class BatteryReceiver : BroadcastReceiver() {
                 SystemProperties.set(SYSPROP_CHARGE, "1")
             }
         }
-        else if (getBatteryLevel(intent) < context.percentage - 1) {
+        else if (getBatteryLevel(intent) < context.resumePercentage) {
             Log.i(TAG, "<${context.percentage}, enabling charge")
             SystemProperties.set(SYSPROP_CHARGE, "1")
         }
