@@ -1,2 +1,3 @@
 # Audio
 af.fast_track_multiplier=1
+af.resampler.quality=7
