@@ -105,8 +105,9 @@ TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
 TARGET_KERNEL_CLANG_VERSION := r487747c
 TARGET_KERNEL_LLVM_BINUTILS := 1
 
-# Disable sparse for ext images
+# Disable sparse on all filesystem images
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
+TARGET_USERIMAGES_SPARSE_EROFS_DISABLED := true
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
