@@ -9,7 +9,7 @@
     "target_path": "hardware/oplus"
   },
   {
-    "repository": "proprietary_vendor_oneplus_sm8150-common",
+    "repository": "android_vendor_oneplus_sm8150-common",
     "target_path": "vendor/oneplus/sm8150-common"
   }
 ]
