@@ -1,0 +1,1 @@
+void _ZN14sensor_factory26wait_for_mandatory_sensorsER11suid_lookup(void*) {}

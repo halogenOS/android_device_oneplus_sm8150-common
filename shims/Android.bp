@@ -1,0 +1,7 @@
+cc_library {
+    name: "sensors.ssc",
+    srcs: ["sensors.ssc_shim.c"],
+    shared_libs: ["//vendor/oneplus/guacamole:sensors.oplus_ssc"],
+    arch: "arm64",
+    vendor: true
+}

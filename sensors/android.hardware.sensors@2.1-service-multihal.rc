@@ -1,5 +1,6 @@
 service vendor.sensors-hal-2-1-multihal /vendor/bin/hw/android.hardware.sensors@2.1-service.multihal
     class hal
+    setenv LD_LIBRARY_PATH /vendor/lib64
     user system
     group system wakelock context_hub input
     task_profiles ServiceCapacityLow
