@@ -1,0 +1,15 @@
+[
+  {
+    "repository": "android_kernel_oneplus_sm8150",
+    "target_path": "kernel/oneplus/sm8150",
+    "branch": "XOS-14.0.3"
+  },
+  {
+    "repository": "android_hardware_oplus",
+    "target_path": "hardware/oplus"
+  },
+  {
+    "repository": "android_vendor_oneplus_sm8150-common",
+    "target_path": "vendor/oneplus/sm8150-common"
+  }
+]
