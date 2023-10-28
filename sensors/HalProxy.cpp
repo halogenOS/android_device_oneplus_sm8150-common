@@ -456,7 +456,7 @@ void HalProxy::initializeSubHalListFromConfigFile(const char* configFileName) {
                         ALOGE("SubHal version was not 2.0 for library: %s",
                               subHalLibraryFile.c_str());
                     } else {
-                        ALOGV("Loaded SubHal from library: %s", subHalLibraryFile.c_str());
+                        ALOGI("Loaded SubHal from library: %s", subHalLibraryFile.c_str());
                         mSubHalList.push_back(std::make_unique<SubHalWrapperV2_0>(subHal));
                     }
                 } else {
@@ -475,7 +475,7 @@ void HalProxy::initializeSubHalListFromConfigFile(const char* configFileName) {
                             ALOGE("SubHal version was not 2.1 for library: %s",
                                   subHalLibraryFile.c_str());
                         } else {
-                            ALOGV("Loaded SubHal from library: %s", subHalLibraryFile.c_str());
+                            ALOGI("Loaded SubHal from library: %s", subHalLibraryFile.c_str());
                             mSubHalList.push_back(std::make_unique<SubHalWrapperV2_1>(subHal));
                         }
                     }
@@ -489,10 +489,11 @@ void HalProxy::initializeSensorList() {
     for (size_t subHalIndex = 0; subHalIndex < mSubHalList.size(); subHalIndex++) {
         auto result = mSubHalList[subHalIndex]->getSensorsList([&](const auto& list) {
             for (SensorInfo sensor : list) {
+                ALOGD("Initializing sensor %s", sensor.name.c_str());
                 if (!subHalIndexIsClear(sensor.sensorHandle)) {
                     ALOGE("SubHal sensorHandle's first byte was not 0");
                 } else {
-                    ALOGV("Loaded sensor: %s", sensor.name.c_str());
+                    ALOGI("Loaded sensor: %s", sensor.name.c_str());
                     sensor.sensorHandle = setSubHalIndex(sensor.sensorHandle, subHalIndex);
                     setDirectChannelFlags(&sensor, mSubHalList[subHalIndex]);
                     if (static_cast<int>(sensor.type) == SENSOR_TYPE_QTI_WISE_LIGHT) {
