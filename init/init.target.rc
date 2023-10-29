@@ -55,6 +55,8 @@ on fs
     restorecon_recursive /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
 
+    exec_start init-persist-sensors
+
 on post-fs
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -225,3 +227,9 @@ service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0
     user system
     group system
     disabled
+
+service init-persist-sensors /odm/bin/init.persist.sensors.sh
+    class late_start
+    user root
+    group root
+    oneshot
