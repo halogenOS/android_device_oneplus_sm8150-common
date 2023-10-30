@@ -198,3 +198,9 @@ zygote.critical_window.minute=10
 # Fling velocities
 ro.min.fling_velocity=140
 ro.max.fling_velocity=20000
+
+# Netmgr
+persist.vendor.data.iwlan.enable=true
+persist.vendor.data.mode=concurrent
+ro.telephony.iwlan_operation_mode=default
+ro.vendor.use_data_netmgrd=true
