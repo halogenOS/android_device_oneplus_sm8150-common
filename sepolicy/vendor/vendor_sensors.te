@@ -1,0 +1,2 @@
+allow vendor_sensors vendor_proc_oplus_version:dir search;
+
