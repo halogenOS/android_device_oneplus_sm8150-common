@@ -7,7 +7,6 @@
 cc_library_shared {
     name: "libqti-perfd-client",
     srcs: ["client.c"],
-    cflags: ["-O3"],
     shared_libs: [
         "liblog",
         "libutils",
