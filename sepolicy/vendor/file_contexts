@@ -1,2 +1,7 @@
 # Display
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.1-service\.oneplus_msmnile    u:object_r:hal_lineage_livedisplay_qti_exec:s0
+
+# Sensors
+/vendor/bin/init\.persist\.sensors\.sh	u:object_r:init_persist_sensors_exec:s0
+/mnt/vendor/persist/sensors/sensors_list\.txt	u:object_r:vendor_persist_sensors_list:s0
+
