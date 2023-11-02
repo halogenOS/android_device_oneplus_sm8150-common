@@ -5,7 +5,10 @@
 sensors_list_file="/mnt/vendor/persist/sensors/sensors_list.txt"
 # Assume the file is out of date when "printf_ap" is found.
 # TODO: use better compare
-if [ -f "$sensors_list_file" ] && grep -q "printf_ap" "$sensors_list_file"; then
+if [ -f "$sensors_list_file" ] && ( \
+    grep -q "printf_ap" "$sensors_list_file" || \
+    [ "$(cat "$sensors_list_file" | wc -l)" -lt 26 ] \
+); then
     # This list was obtained by extracting the sensors_list.txt file from a phone
     # with a fresh install and removing the offending entries that are not found
     # during boot
