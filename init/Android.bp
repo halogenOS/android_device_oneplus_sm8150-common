@@ -45,6 +45,13 @@ prebuilt_etc {
     vendor: true,
 }
 
+prebuilt_etc {
+    name: "init.persist.sensors.rc",
+    src: "init.persist.sensors.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
 sh_binary {
     name: "init.class_main.sh",
     src: "init.class_main.sh",
@@ -60,7 +67,7 @@ sh_binary {
 sh_binary {
     name: "init.persist.sensors.sh",
     src: "init.persist.sensors.sh",
-    device_specific: true,
+    vendor: true,
 }
 
 sh_binary {

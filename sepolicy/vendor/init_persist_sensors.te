@@ -1,0 +1,13 @@
+type vendor_persist_sensors_list, data_file_type, file_type;
+type init_persist_sensors_exec, vendor_file_type, exec_type, file_type;
+
+type init_persist_sensors, domain;
+init_daemon_domain(init_persist_sensors);
+
+allow init_persist_sensors vendor_persist_sensors_list:file { getattr open read write lock };
+allow init_persist_sensors vendor_persist_sensors_file:dir search;
+allow init_persist_sensors mnt_vendor_file:dir search;
+allow init_persist_sensors vendor_shell_exec:file { execute open map read getattr };
+allow init_persist_sensors vendor_toolbox_exec:file { execute getattr };
+allow init_persist_sensors proc:file { getattr };
+

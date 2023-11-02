@@ -1,0 +1,8 @@
+on post-fs
+    exec_start init-persist-sensors
+
+service init-persist-sensors /vendor/bin/init.persist.sensors.sh
+    class core
+    user root
+    group root
+    oneshot
