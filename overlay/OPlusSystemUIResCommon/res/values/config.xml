@@ -9,4 +9,5 @@
           vibrator is capable of subtle vibrations -->
      <bool name="config_vibrateOnIconAnimation">true</bool>
 
+     <bool name="config_statusBarBurnInProtection">true</bool>
 </resources>
