@@ -8,6 +8,7 @@ import android.content.Context
 import android.service.quicksettings.Tile
 import android.content.Intent
 import android.os.BatteryManager
+import android.os.FileUtils;
 import android.os.SystemProperties
 import android.util.Log
 import android.content.IntentFilter
@@ -38,7 +39,7 @@ class BatteryChargeLimitTileService : TileService() {
     }
 
     override fun onClick() {
-        super.onClick() 
+        super.onClick()
         when(percentage) {
             0 -> {
                 setPercentage(80)
@@ -70,15 +71,15 @@ class BatteryChargeLimitTileService : TileService() {
                 Log.i(TAG, "Battery is charging")
                 if (getBatteryLevel(intent) >= percentage) {
                     Log.i(TAG, ">= ${percentage}, disabling charge")
-                    SystemProperties.set(SYSPROP_CHARGE, "0")
+                    FileUtils.stringToFile(BATTERY_CHARGE_PATH, "0")
                 } else {
                     Log.i(TAG, "< ${percentage}, enabling charge")
-                    SystemProperties.set(SYSPROP_CHARGE, "1")
+                    FileUtils.stringToFile(BATTERY_CHARGE_PATH, "1")
                 }
             }
             else if (getBatteryLevel(intent) < resumePercentage) {
                 Log.i(TAG, "<${percentage}, enabling charge")
-                SystemProperties.set(SYSPROP_CHARGE, "1")
+                FileUtils.stringToFile(BATTERY_CHARGE_PATH, "1")
             }
         }
 
