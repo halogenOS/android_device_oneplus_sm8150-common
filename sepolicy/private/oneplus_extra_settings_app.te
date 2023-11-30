@@ -2,5 +2,5 @@ type oneplus_extra_settings_app, domain;
 
 app_domain(oneplus_extra_settings_app);
 
-rw_dir_file(oneplus_extra_settings_app, vendor_sysfs_battery_supply);
-allow oneplus_extra_settings_app vendor_sysfs_battery_supply:dir search;
+rw_dir_file(oneplus_extra_settings_app, sysfs_battery);
+
