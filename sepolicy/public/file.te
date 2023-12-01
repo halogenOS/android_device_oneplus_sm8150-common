@@ -1,2 +1,5 @@
 # Motor
 type sysfs_motor, sysfs_type, fs_type;
+
+#Battery
+type sysfs_battery, sysfs_type, fs_type;
