@@ -2,5 +2,8 @@ type oneplus_extra_settings_app, domain;
 
 app_domain(oneplus_extra_settings_app);
 
+allow oneplus_extra_settings_app app_api_service:service_manager find;
+
 rw_dir_file(oneplus_extra_settings_app, sysfs_battery);
+rw_dir_file(oneplus_extra_settings_app, system_app_data_file)
 
