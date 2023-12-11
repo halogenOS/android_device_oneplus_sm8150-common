@@ -20,9 +20,7 @@
 
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/extra_settings"
-        android:defaultToDeviceProtectedStorage="true"
-        android:directBootAware="true">
+        android:label="@string/extra_settings">
 
         <receiver
             android:name="org.halogenos.settings.device.extra.BatteryReceiver"
