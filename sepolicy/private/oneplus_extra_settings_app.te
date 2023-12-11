@@ -7,3 +7,5 @@ allow oneplus_extra_settings_app app_api_service:service_manager find;
 rw_dir_file(oneplus_extra_settings_app, sysfs_battery);
 rw_dir_file(oneplus_extra_settings_app, system_app_data_file)
 
+dontaudit camera_helper_app system_data_file:dir search;
+
