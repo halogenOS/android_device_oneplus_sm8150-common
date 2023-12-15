@@ -1,1 +1,2 @@
 rw_dir_file(system_server, sysfs_motor)
+rw_dir_file(system_server, sysfs_battery)
