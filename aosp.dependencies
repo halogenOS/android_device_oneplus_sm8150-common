@@ -10,6 +10,7 @@
   },
   {
     "repository": "android_vendor_oneplus_sm8150-common",
-    "target_path": "vendor/oneplus/sm8150-common"
+    "target_path": "vendor/oneplus/sm8150-common",
+    "branch": "XOS-14.0.1"
   }
 ]
