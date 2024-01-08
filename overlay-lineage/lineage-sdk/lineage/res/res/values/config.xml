@@ -5,18 +5,23 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <!-- Default value for proximity check on screen wake
+     NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)-->
+    <bool name="config_proximityCheckOnWake">true</bool>
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
+
     <!-- Paths to the libraries that contain device specific key handlers -->
     <string-array name="config_deviceKeyHandlerLibs" translatable="false">
         <item>/system_ext/priv-app/LineageParts/LineageParts.apk</item>
-        <item>/system_ext/app/KeyHandler/KeyHandler.apk</item>
         <item>/system_ext/priv-app/OnePlusCameraHelper/OnePlusCameraHelper.apk</item>
+        <item>/system_ext/priv-app/OPlusExtras/OPlusExtras.apk</item>
     </string-array>
 
     <!-- Names of the key handler classes -->
     <string-array name="config_deviceKeyHandlerClasses" translatable="false">
         <item>org.lineageos.lineageparts.gestures.KeyHandler</item>
-        <item>org.lineageos.settings.device.KeyHandler</item>
         <item>org.lineageos.camerahelper.KeyHandler</item>
+        <item>org.lineageos.settings.slider.KeyHandler</item>
     </string-array>
 
     <!-- Hardware keys present on the device, stored as a bit field.
@@ -55,5 +60,10 @@
         <item>org.telegram.messenger</item>
         <item>org.thunderdog.challegram</item>
         <item>us.zoom.videomeetings</item>
+    </string-array>
+
+    <!-- The list of package IDs that are allowed to skip camera high frame rate checks. -->
+    <string-array name="config_cameraHFRPrivAppList" translatable="false">
+        <item>org.lineageos.aperture</item>
     </string-array>
 </resources>

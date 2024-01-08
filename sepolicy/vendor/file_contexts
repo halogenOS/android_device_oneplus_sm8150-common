@@ -2,6 +2,13 @@
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.1-service\.oneplus_msmnile    u:object_r:hal_lineage_livedisplay_qti_exec:s0
 
 # Sensors
-/vendor/bin/init\.persist\.sensors\.sh	u:object_r:init_persist_sensors_exec:s0
-/mnt/vendor/persist/sensors/sensors_list\.txt	u:object_r:vendor_persist_sensors_list:s0
+/sys/bus/iio/devices                                                                                                      u:object_r:vendor_sysfs_iio:s0
+/sys/bus/iio/devices/iio:device0(/.*)?                                                                                    u:object_r:vendor_sysfs_iio:s0
+/sys/bus/iio/devices/iio:device1(/.*)?                                                                                    u:object_r:vendor_sysfs_iio:s0
+/sys/bus/iio/devices/iio:device2(/.*)?                                                                                    u:object_r:vendor_sysfs_iio:s0
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm8150@0:vadc@3100/iio:device0(/.*)?   u:object_r:vendor_sysfs_iio:s0
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:vadc@3100/iio:device1(/.*)?  u:object_r:vendor_sysfs_iio:s0
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-04/c440000.qcom,spmi:qcom,pm8150l@4:vadc@3100/iio:device2(/.*)?  u:object_r:vendor_sysfs_iio:s0
 
+# Oppo NV
+/data/opponvitems(/.*)?                     u:object_r:opponvitem_file:s0

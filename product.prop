@@ -1,3 +1,6 @@
 # Audio
 af.fast_track_multiplier=1
 af.resampler.quality=7
+
+# FUSE
+persist.sys.fuse.passthrough.enable=true
