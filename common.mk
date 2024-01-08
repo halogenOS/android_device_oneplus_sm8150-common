@@ -26,7 +26,7 @@ PRODUCT_PACKAGES += \
 
 # OPlusExtras
 PRODUCT_PACKAGES += \
-    OPlusExtras \
+    KeyHandler \
     tri-state-key-calibrate
 
 # APEX
