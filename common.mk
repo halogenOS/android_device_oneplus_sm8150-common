@@ -338,13 +338,6 @@ PRODUCT_PACKAGES += \
     OPlusExtrasResCommon \
     SimpleDeviceConfigCommon
 
-# Oplus-fwk
-PRODUCT_PACKAGES += \
-    oplus-fwk
-
-PRODUCT_BOOT_JARS += \
-    oplus-fwk
-
 # Perf
 PRODUCT_PACKAGES += \
     libqti-perfd-client
