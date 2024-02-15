@@ -245,13 +245,13 @@ PRODUCT_PACKAGES += \
     init.oplus.sh \
     init.persist.sensors.sh \
     init.qcom.early_boot.sh \
-    init.qcom.post_boot.sh \
     init.qcom.rc \
     init.qcom.recovery.rc \
     init.qcom.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.cust.rc \
+    init.target.power.rc \
     init.target.rc \
     ueventd.qcom.rc
 
@@ -342,10 +342,6 @@ PRODUCT_PACKAGES += \
 # Perf
 PRODUCT_PACKAGES += \
     libqti-perfd-client
-
-# Power
-$(call inherit-product, hardware/oplus/libqti-perfd-client/libqti-perfd-client.mk)
-$(call inherit-product, hardware/oplus/power-libperfmgr/power-libperfmgr.mk)
 
 PRODUCT_PACKAGES += \
     android.hardware.power@1.2.vendor
