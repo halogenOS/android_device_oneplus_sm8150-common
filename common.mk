@@ -241,7 +241,6 @@ PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.oplus.rc \
     init.oplus_extras.rc \
-    init.oplus.perf.rc \
     init.oplus.sh \
     init.persist.sensors.sh \
     init.qcom.early_boot.sh \
