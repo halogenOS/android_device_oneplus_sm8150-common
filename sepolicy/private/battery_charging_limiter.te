@@ -6,6 +6,7 @@ app_domain(battery_charging_limiter_app)
 allow battery_charging_limiter_app {
   batteryproperties_service
   batterystats_service
+  lineage_health_interface_service
 }:service_manager find;
 
 allow battery_charging_limiter_app system_app_data_file:dir create_dir_perms;
