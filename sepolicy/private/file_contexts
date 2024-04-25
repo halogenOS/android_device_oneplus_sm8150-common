@@ -1,2 +1,4 @@
 # Sensors
 /(system_ext|system/system_ext)/bin/hw/vendor\.lineage\.oplus_als.service    u:object_r:hal_lineage_oplus_als_aidl_exec:s0
+
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/battery/mmi_charging_enable u:object_r:sysfs_battery_supply_oplus:s0
