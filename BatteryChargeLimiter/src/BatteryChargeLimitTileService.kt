@@ -8,13 +8,17 @@ import android.content.Context
 import android.service.quicksettings.Tile
 import android.content.Intent
 import android.os.BatteryManager
-import android.os.FileUtils;
+import android.os.FileUtils
+import android.os.ServiceManager
 import android.util.Log
 import android.content.IntentFilter
+
+import vendor.lineage.health.IChargingControl
 
 val levels = listOf(80, 90)
 
 class BatteryChargeLimitTileService : TileService() {
+
     override fun onTileAdded() {
         if (percentage == 0) {
             qsTile.state = Tile.STATE_INACTIVE
@@ -40,7 +44,7 @@ class BatteryChargeLimitTileService : TileService() {
             qsTile.state = Tile.STATE_ACTIVE
             qsTile.subtitle = "$firstPercentage%"
         } else if (percentage in levels.dropLast(1)) {
-            val nextPercentage = levels[levels.indexOf(percentage)]
+            val nextPercentage = levels[levels.indexOf(percentage) + 1]
             qsTile.state = Tile.STATE_ACTIVE
             qsTile.subtitle = "$nextPercentage%"
         } else if (percentage == levels.last()) {
@@ -73,8 +77,10 @@ class BatteryChargeLimitTileService : TileService() {
     val percentage get()=getSharedPreferences("PREFERENCES",Context.MODE_PRIVATE).getInt("percentage", 0)
 }
 
-
 fun handleBatteryStateChange(intent: Intent, percentage: Int, resumePercentage: Int) {
+    val chargingControl = IChargingControl.Stub.asInterface(
+                ServiceManager.waitForDeclaredService(
+                        IChargingControl.DESCRIPTOR + "/default"));
     val batteryLevel = getBatteryLevel(intent)
     val currentStatus = intent.getIntExtra(BatteryManager.EXTRA_STATUS, BatteryManager.BATTERY_STATUS_UNKNOWN)
     Log.i(TAG, "Batterylevel: $batteryLevel, status: $currentStatus")
@@ -82,13 +88,13 @@ fun handleBatteryStateChange(intent: Intent, percentage: Int, resumePercentage: 
         Log.i(TAG, "Battery is charging: $percentage")
         if (getBatteryLevel(intent) >= percentage) {
             Log.i(TAG, ">= $percentage, disabling charge")
-            FileUtils.stringToFile(BATTERY_CHARGE_PATH, "0")
+            chargingControl.setChargingEnabled(false)
         } else {
             Log.i(TAG, "< $percentage, enabling charge")
-            FileUtils.stringToFile(BATTERY_CHARGE_PATH, "1")
+            chargingControl.setChargingEnabled(true)
         }
     } else if (getBatteryLevel(intent) < resumePercentage) {
         Log.i(TAG, "<$percentage, enabling charge")
-        FileUtils.stringToFile(BATTERY_CHARGE_PATH, "1")
+        chargingControl.setChargingEnabled(true)
     }
 }
