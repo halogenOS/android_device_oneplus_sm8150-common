@@ -45,6 +45,7 @@ class BatteryChargeLimitTileService : TileService() {
             qsTile.subtitle = "$firstPercentage%"
         } else if (percentage in levels.dropLast(1)) {
             val nextPercentage = levels[levels.indexOf(percentage) + 1]
+	    setPercentage(nextPercentage)
             qsTile.state = Tile.STATE_ACTIVE
             qsTile.subtitle = "$nextPercentage%"
         } else if (percentage == levels.last()) {
