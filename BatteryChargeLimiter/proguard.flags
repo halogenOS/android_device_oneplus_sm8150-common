@@ -1,3 +1,0 @@
--keep class org.halogenos.device.oplus.sm8150.batterychargelimiter.* {
-  *;
-}
