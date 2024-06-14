@@ -89,7 +89,10 @@ PRODUCT_PACKAGES += \
     liba2dpoffload \
     vendor.qti.hardware.bluetooth_audio@2.1.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
-    vendor.qti.hardware.btconfigstore@2.0.vendor
+    vendor.qti.hardware.btconfigstore@2.0.vendor \
+    libbthost_if \
+    libldacBT_bco \
+    android.hardware.bluetooth.audio-impl
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
@@ -303,7 +306,8 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libOmxVidcCommon \
-    libstagefrighthw
+    libstagefrighthw \
+    libstagefright_softomx_plugin.vendor
 
 # Overlays
 $(call inherit-product, hardware/oplus/overlay/generic/generic.mk)
@@ -444,6 +448,18 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
+
+# VNDK
+PRODUCT_PACKAGES += \
+    libutilscallstack.vendor:64 \
+    libnetutils.vendor:64 \
+    libsqlite.vendor:64 \
+    libprocessgroup.vendor \
+    libjsoncpp.vendor \
+    libcurl.vendor \
+    libpng.vendor:32
+
+PRODUCT_EXTRA_VNDK_VERSIONS := 30
 
 # Wifi
 PRODUCT_PACKAGES += \
