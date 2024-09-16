@@ -317,7 +317,6 @@ PRODUCT_PACKAGES += \
 
 # Power
 $(call inherit-product, hardware/oplus/libqti-perfd-client/libqti-perfd-client.mk)
-$(call inherit-product, hardware/oplus/power-libperfmgr/power-libperfmgr.mk)
 
 PRODUCT_PACKAGES += \
     android.hardware.power@1.2.vendor
