@@ -92,12 +92,13 @@ BOARD_KERNEL_CMDLINE := \
     msm_rtb.filter=0x237 \
     service_locator.enable=1 \
     swiotlb=2048
-ifeq ($(TARGET_BUILD_VARIANT),eng)
 BOARD_KERNEL_CMDLINE += \
     printk.devkmsg=on \
     console=ttyGS0,115200 \
-    androidboot.console=ttyGS0,115200
-endif
+    earlycon=ttyGS0,115200 \
+    androidboot.console=ttyGS0,115200 \
+    ignore_loglevel \
+    keep_bootcon
 BOARD_KERNEL_IMAGE_NAME := Image-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true

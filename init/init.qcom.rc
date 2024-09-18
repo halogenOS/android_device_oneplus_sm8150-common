@@ -28,7 +28,15 @@
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
 
+service serial_logging /system/bin/logcat -b all -v threadtime -f /dev/kmsg *:V
+    class main
+    user root
+    group root root
+
 on early-init
+    write /dev/kmsg "reached early-init in init.qcom.rc"
+    start serial_logging
+
   # create symlink for vendor mount points
     symlink /vendor/firmware_mnt /firmware
     symlink /vendor/bt_firmware /bt_firmware
