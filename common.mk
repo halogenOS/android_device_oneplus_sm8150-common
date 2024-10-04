@@ -321,7 +321,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 $(call inherit-product, hardware/oplus/libqti-perfd-client/libqti-perfd-client.mk)
-$(call inherit-product, hardware/oplus/power-libperfmgr/power-libperfmgr.mk)
+PRODUCT_PACKAGES += android.hardware.power-service.lineage-libperfmgr
 
 PRODUCT_PACKAGES += \
     android.hardware.power@1.2.vendor
@@ -376,6 +376,7 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
+    hardware/lineage/interfaces/power-libperfmgr \
     hardware/oplus
 
 # Telephony
