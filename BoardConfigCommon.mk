@@ -81,7 +81,8 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 TARGET_KERNEL_CONFIG := \
     vendor/sm8150-perf_defconfig \
-    vendor/oplus.config
+    vendor/oplus.config \
+    astatine.config
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
 
 # Kernel modules - WLAN
