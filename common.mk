@@ -18,9 +18,9 @@ PRODUCT_PACKAGES += \
     otapreopt_script
 
 # Alert slider
-PRODUCT_PACKAGES += \
-    KeyHandler \
-    tri-state-key-calibrate
+# PRODUCT_PACKAGES += \
+#     KeyHandler \
+#     tri-state-key-calibrate
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -124,8 +124,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
 
 # Doze
-PRODUCT_PACKAGES += \
-    OplusDoze
+# PRODUCT_PACKAGES += \
+#     OplusDoze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -233,7 +233,6 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
     CarrierConfigResCommon \
     FrameworksResTarget \
-    NcmTetheringOverlay \
     OPlusFrameworksResCommon \
     OPlusSettingsResCommon \
     OPlusSystemUIResCommon
@@ -311,8 +310,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml
 
 # Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch-service.oplus
+# PRODUCT_PACKAGES += \
+#     vendor.lineage.touch-service.oplus
 
 $(call soong_config_set,OPLUS_LINEAGE_TOUCH_HAL,ENABLE_HTPR,false)
 $(call soong_config_set,OPLUS_LINEAGE_TOUCH_HAL,INCLUDE_DIR,$(LOCAL_PATH)/touch/include)
