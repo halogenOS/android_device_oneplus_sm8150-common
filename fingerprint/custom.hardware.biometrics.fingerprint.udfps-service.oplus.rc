@@ -1,0 +1,4 @@
+service custom.hardware.biometrics.fingerprint.udfps-oplus /vendor/bin/hw/custom.hardware.biometrics.fingerprint.udfps-service.oplus
+    class hal
+    user system
+    group system
