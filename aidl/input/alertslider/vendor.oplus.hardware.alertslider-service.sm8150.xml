@@ -1,0 +1,7 @@
+<manifest version="1.0" type="device">
+    <hal format="aidl">
+        <name>vendor.oplus.hardware.alertslider</name>
+        <version>1</version>
+        <fqname>IAlertSlider/default</fqname>
+    </hal>
+</manifest>

@@ -1,2 +1,5 @@
+# Alert slider
+type proc_tristatekey, proc_type, fs_type;
+
 # Motor
 type sysfs_motor, sysfs_type, fs_type;

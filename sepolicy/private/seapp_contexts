@@ -1,1 +1,2 @@
+user=system seinfo=platform name=vendor.oplus.hardware.alertslider.controller domain=alertslider_controller_app type=system_app_data_file
 user=system seinfo=platform name=org.lineageos.camerahelper domain=camera_helper_app type=system_app_data_file

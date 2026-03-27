@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-FileCopyrightText: 2026 The halogenOS Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <style name="alert_slider_theme" parent="@*android:style/Theme.DeviceDefault.SystemUI">
+        <item name="android:windowIsFloating">true</item>
+    </style>
+</resources>

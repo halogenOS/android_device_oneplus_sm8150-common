@@ -1,0 +1,4 @@
+service alertslider-hal-sm8150 /vendor/bin/hw/vendor.oplus.hardware.alertslider-service.sm8150
+    class hal
+    user system
+    group system input
