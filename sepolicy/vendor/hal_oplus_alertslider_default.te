@@ -1,0 +1,14 @@
+# Alert slider HAL
+binder_use(hal_oplus_alertslider_default)
+
+# Read tri-state key position from procfs
+allow hal_oplus_alertslider_default vendor_proc_tri_state_key:dir search;
+allow hal_oplus_alertslider_default proc_tristatekey:file r_file_perms;
+
+# Read input device for slider events
+allow hal_oplus_alertslider_default input_device:dir r_dir_perms;
+allow hal_oplus_alertslider_default input_device:chr_file r_file_perms;
+
+# Read /sys/class/input/*/device/name to find the right device
+allow hal_oplus_alertslider_default sysfs:dir r_dir_perms;
+allow hal_oplus_alertslider_default sysfs:file r_file_perms;

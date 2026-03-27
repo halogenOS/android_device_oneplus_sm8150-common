@@ -1,2 +1,5 @@
+# Alert slider
+genfscon proc /tristatekey/tri_state    u:object_r:proc_tristatekey:s0
+
 # Motor
 genfscon sysfs /class/motor    u:object_r:sysfs_motor:s0

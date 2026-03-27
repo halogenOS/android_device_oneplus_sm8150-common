@@ -1,0 +1,16 @@
+cc_binary {
+    name: "vendor.oplus.hardware.alertslider-service.sm8150",
+    relative_install_path: "hw",
+    vendor: true,
+    init_rc: ["vendor.oplus.hardware.alertslider-service.sm8150.rc"],
+    vintf_fragments: ["vendor.oplus.hardware.alertslider-service.sm8150.xml"],
+    srcs: [
+        "service.cpp",
+        "AlertSlider.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "vendor.oplus.hardware.alertslider-V1-ndk",
+    ],
+}

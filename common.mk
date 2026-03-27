@@ -18,9 +18,9 @@ PRODUCT_PACKAGES += \
     otapreopt_script
 
 # Alert slider
-# PRODUCT_PACKAGES += \
-#     KeyHandler \
-#     tri-state-key-calibrate
+PRODUCT_PACKAGES += \
+    vendor.oplus.hardware.alertslider-service.sm8150 \
+    AlertSliderController
 
 # Audio
 PRODUCT_PACKAGES += \

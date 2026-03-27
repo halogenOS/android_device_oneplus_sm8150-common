@@ -1,3 +1,6 @@
+# Alert slider
+/vendor/bin/hw/vendor\.oplus\.hardware\.alertslider-service\.sm8150    u:object_r:hal_oplus_alertslider_default_exec:s0
+
 # Fingerprint
 /vendor/bin/hw/custom\.hardware\.biometrics\.fingerprint\.udfps-service\.oplus    u:object_r:hal_custom_hardware_biometrics_fingerprint_udfps_default_exec:s0
 
