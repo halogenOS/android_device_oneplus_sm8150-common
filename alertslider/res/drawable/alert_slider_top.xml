@@ -11,7 +11,7 @@
                 android:bottomRightRadius="@dimen/alert_slider_directional_radius"
                 android:topLeftRadius="@dimen/alert_slider_corner_radius"
                 android:topRightRadius="@dimen/alert_slider_corner_radius" />
-            <solid android:color="@color/alert_slider_notification_background" />
+            <solid android:color="@color/alert_slider_background" />
         </shape>
     </item>
 </layer-list>

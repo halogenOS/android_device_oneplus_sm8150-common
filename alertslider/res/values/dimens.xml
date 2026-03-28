@@ -4,8 +4,8 @@
     SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-    <dimen name="alert_slider_icon_size">24dp</dimen>
-    <dimen name="alert_slider_margin">2dp</dimen>
+    <dimen name="alert_slider_icon_size">20dp</dimen>
+    <dimen name="alert_slider_icon_circle_size">40dp</dimen>
     <dimen name="alert_slider_container_padding">16dp</dimen>
     <dimen name="alert_slider_padding">18dp</dimen>
     <dimen name="alert_slider_dialog_height">48dp</dimen>
