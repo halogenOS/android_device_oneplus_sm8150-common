@@ -6,5 +6,5 @@
 <resources>
     <string name="alert_slider_mode_normal">Ring</string>
     <string name="alert_slider_mode_vibration">Vibrate</string>
-    <string name="alert_slider_mode_silent">DND</string>
+    <string name="alert_slider_mode_silent">Silent</string>
 </resources>

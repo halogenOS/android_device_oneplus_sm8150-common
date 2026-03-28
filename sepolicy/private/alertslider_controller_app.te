@@ -4,6 +4,5 @@ app_domain(alertslider_controller_app)
 
 hal_client_domain(alertslider_controller_app, vendor_hal_oplus_alertslider)
 
-# AudioManager for ringer mode
-allow alertslider_controller_app audioserver_service:service_manager find;
+# Set ringer mode
 allow alertslider_controller_app app_api_service:service_manager find;

@@ -12,6 +12,7 @@ import android.media.AudioManager
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
+import android.os.ServiceManager
 import android.os.VibrationAttributes
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -37,13 +38,15 @@ class AlertSliderService : Service() {
         audioManager = getSystemService(AudioManager::class.java)
         vibrator = getSystemService(Vibrator::class.java)
 
-        val binder = waitForService("$DESCRIPTOR/default")
+        val binder = ServiceManager.waitForService("$DESCRIPTOR/default")
         if (binder == null) {
             Log.e(TAG, "Alert slider HAL not found")
             stopSelf()
             return
         }
         alertSlider = IAlertSlider.Stub.asInterface(binder)
+
+        dialog = AlertSliderDialog(this)
 
         applyPosition(alertSlider!!.position)
         firstRun = false
@@ -82,16 +85,9 @@ class AlertSliderService : Service() {
         }
 
         Log.d(TAG, "Position: $position -> ringer mode: $ringerMode")
-        if (ringerMode == AudioManager.RINGER_MODE_SILENT) {
-            setZenMode(this, 1)
-        } else {
-            setZenMode(this, 0)
-            audioManager.ringerMode = ringerMode
-        }
+        audioManager.ringerModeInternal = ringerMode
 
         if (!firstRun) {
-            dialog?.dismiss()
-            dialog = AlertSliderDialog(this)
             dialog?.show(position, ringerMode)
         }
 
@@ -112,32 +108,8 @@ class AlertSliderService : Service() {
         private val VIBRATION_ATTRS = VibrationAttributes.createForUsage(
             VibrationAttributes.USAGE_HARDWARE_FEEDBACK
         )
-        private val EFFECT_HEAVY_CLICK = VibrationEffect.createPredefined(VibrationEffect.EFFECT_HEAVY_CLICK)
-        private val EFFECT_DOUBLE_CLICK = VibrationEffect.createPredefined(VibrationEffect.EFFECT_DOUBLE_CLICK)
-
-        private fun setZenMode(context: Context, mode: Int) {
-            try {
-                val nm = context.getSystemService(Context.NOTIFICATION_SERVICE)
-                val filter = when (mode) {
-                    0 -> 4 // INTERRUPTION_FILTER_ALL
-                    1 -> 2 // INTERRUPTION_FILTER_PRIORITY
-                    2 -> 1 // INTERRUPTION_FILTER_NONE
-                    else -> 4
-                }
-                nm::class.java.getMethod("setInterruptionFilter", Int::class.javaPrimitiveType)
-                    .invoke(nm, filter)
-            } catch (e: Exception) {
-                Log.e(TAG, "Failed to set zen mode", e)
-            }
-        }
-
-        private fun waitForService(name: String): IBinder? = try {
-            val sm = Class.forName("android.os.ServiceManager")
-            sm.getMethod("waitForService", String::class.java).invoke(null, name) as? IBinder
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to get service $name", e)
-            null
-        }
+        private val EFFECT_HEAVY_CLICK = VibrationEffect.get(VibrationEffect.EFFECT_HEAVY_CLICK)
+        private val EFFECT_DOUBLE_CLICK = VibrationEffect.get(VibrationEffect.EFFECT_DOUBLE_CLICK)
 
         fun start(context: Context) {
             context.startService(Intent(context, AlertSliderService::class.java))

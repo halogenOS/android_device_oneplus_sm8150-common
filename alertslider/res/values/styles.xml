@@ -4,7 +4,7 @@
     SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-    <style name="alert_slider_theme" parent="@android:style/Theme.DeviceDefault">
+    <style name="alert_slider_theme" parent="@*android:style/Theme.DeviceDefault.SystemUI">
         <item name="android:windowIsFloating">true</item>
     </style>
 </resources>

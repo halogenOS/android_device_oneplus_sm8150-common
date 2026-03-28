@@ -49,7 +49,4 @@
         <item>0:2:15</item>
     </string-array>
 
-    <!-- Grant DND access to alert slider controller -->
-    <string name="config_defaultDndAccessPackages" translatable="false">com.android.camera2:vendor.oplus.hardware.alertslider.controller</string>
-
 </resources>
