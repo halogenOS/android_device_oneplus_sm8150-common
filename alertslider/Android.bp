@@ -2,10 +2,10 @@ android_app {
     name: "AlertSliderController",
     srcs: ["src/**/*.kt"],
     resource_dirs: ["res"],
-    platform_apis: true,
+    sdk_version: "system_current",
     privileged: true,
     certificate: "platform",
-    system_ext_specific: true,
+    vendor: true,
 
     static_libs: [
         "vendor.oplus.hardware.alertslider-V1-java",

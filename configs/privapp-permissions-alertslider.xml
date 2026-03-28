@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-FileCopyrightText: 2026 The halogenOS Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+<permissions>
+    <privapp-permissions package="vendor.oplus.hardware.alertslider.controller">
+        <permission name="android.permission.SYSTEM_ALERT_WINDOW" />
+    </privapp-permissions>
+</permissions>

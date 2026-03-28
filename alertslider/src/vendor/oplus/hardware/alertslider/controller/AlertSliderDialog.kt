@@ -52,9 +52,8 @@ class AlertSliderDialog(private val context: Context) :
                     WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or
                     WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
             )
-            it.addPrivateFlags(WindowManager.LayoutParams.PRIVATE_FLAG_TRUSTED_OVERLAY)
             it.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
-            it.setType(WindowManager.LayoutParams.TYPE_VOLUME_OVERLAY)
+            it.setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY)
             it.attributes = it.attributes.apply {
                 format = PixelFormat.TRANSLUCENT
                 layoutInDisplayCutoutMode =
@@ -101,7 +100,7 @@ class AlertSliderDialog(private val context: Context) :
         })
 
         val iconName = when (ringerMode) {
-            AudioManager.RINGER_MODE_SILENT -> "ic_speaker_mute"
+            AudioManager.RINGER_MODE_SILENT -> "ic_qs_dnd_on"
             AudioManager.RINGER_MODE_VIBRATE -> "ic_volume_ringer_vibrate"
             else -> "ic_speaker_on"
         }
