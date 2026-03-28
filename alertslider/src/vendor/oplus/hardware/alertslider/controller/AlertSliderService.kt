@@ -46,8 +46,6 @@ class AlertSliderService : Service() {
         }
         alertSlider = IAlertSlider.Stub.asInterface(binder)
 
-        dialog = AlertSliderDialog(this)
-
         applyPosition(alertSlider!!.position)
         firstRun = false
         startWatching()
@@ -88,6 +86,8 @@ class AlertSliderService : Service() {
         audioManager.ringerModeInternal = ringerMode
 
         if (!firstRun) {
+            dialog?.dismiss()
+            dialog = AlertSliderDialog(this)
             dialog?.show(position, ringerMode)
         }
 
