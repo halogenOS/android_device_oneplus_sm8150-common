@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: The halogenOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# Exposes the kernel console and the debug shell as a CDC ACM serial port
+# from early init on, before the USB configuration of zygote-start replaces
+# the gadget functions.
+on init
+    mkdir /config/usb_gadget/g1 0770
+    write /config/usb_gadget/g1/idVendor 0x1d6b
+    write /config/usb_gadget/g1/idProduct 0x0104
+    mkdir /config/usb_gadget/g1/strings/0x409 0770
+    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
+    write /config/usb_gadget/g1/strings/0x409/product "serial console"
+    mkdir /config/usb_gadget/g1/functions/acm.console
+    mkdir /config/usb_gadget/g1/configs/b.1 0770
+    symlink /config/usb_gadget/g1/functions/acm.console /config/usb_gadget/g1/configs/b.1/f1
+    wait /sys/class/udc/${ro.boot.usbcontroller} 10
+    write /config/usb_gadget/g1/UDC ${ro.boot.usbcontroller}
+    wait /dev/ttyGS0 5
+    start console

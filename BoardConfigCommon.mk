@@ -79,6 +79,13 @@ BOARD_RAMDISK_USE_LZ4 := true
 TARGET_KERNEL_CONFIG := \
     vendor/sm8150-perf_defconfig \
     vendor/oplus.config
+
+# Kernel console and debug shell on the USB serial gadget
+ifeq ($(TARGET_BUILD_VARIANT),eng)
+BOARD_KERNEL_CMDLINE += console=ttyGS0,115200n8 androidboot.console=ttyGS0
+TARGET_KERNEL_CONFIG += vendor/serial_console.config
+endif
+
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
 
 # Kernel modules - WLAN

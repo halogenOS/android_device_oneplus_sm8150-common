@@ -25,6 +25,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.serial-console.rc",
+    src: "init.serial-console.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "init.target.power.rc",
     src: "init.target.power.rc",
     sub_dir: "init/hw",

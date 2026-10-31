@@ -1,0 +1,5 @@
+# SPDX-FileCopyrightText: The halogenOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# Serial console of eng builds
+/dev/ttyGS[0-9]*                                u:object_r:console_device:s0
