@@ -1,0 +1,26 @@
+//
+// SPDX-FileCopyrightText: The halogenOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+rust_binary {
+    name: "custom.hardware.health.charging-service.sm8150",
+    relative_install_path: "hw",
+    vendor: true,
+    init_rc: ["custom.hardware.health.charging-service.sm8150.rc"],
+    vintf_fragments: ["custom.hardware.health.charging-service.sm8150.xml"],
+    crate_root: "src/main.rs",
+    srcs: ["src/*.rs"],
+    rustlibs: [
+        "custom.hardware.health.charging-V1-rust",
+        "libandroid_logger",
+        "libbinder_rs",
+        "libkobject_uevent",
+        "liblibc",
+        "liblog_rust",
+        "libnetlink_sys",
+        "libsignal_hook",
+        "libthiserror",
+        "libtokio",
+    ],
+}

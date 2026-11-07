@@ -162,7 +162,8 @@ PRODUCT_COPY_FILES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health-service.qti
+    android.hardware.health-service.qti \
+    custom.hardware.health.charging-service.sm8150
 
 # Hotword enrollement
 PRODUCT_COPY_FILES += \
@@ -203,12 +204,6 @@ $(call soong_config_set_bool,libion,legacy_impl,true)
 
 # Kernel
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
-
-# Lineage Health
-PRODUCT_PACKAGES += \
-    vendor.lineage.health-service.default
-
-$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/oplus_chg/battery/mmi_charging_enable)
 
 # Media
 PRODUCT_COPY_FILES += \

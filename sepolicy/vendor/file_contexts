@@ -1,6 +1,9 @@
 # Alert slider
 /vendor/bin/hw/vendor\.oplus\.hardware\.alertslider-service\.sm8150    u:object_r:hal_oplus_alertslider_default_exec:s0
 
+# Charge limit
+/vendor/bin/hw/custom\.hardware\.health\.charging-service\.sm8150    u:object_r:hal_custom_hardware_health_charging_default_exec:s0
+
 # Init
 /(odm|vendor/odm)/bin/init\.oplus\.hall\.sh    u:object_r:vendor_qti_init_shell_exec:s0
 

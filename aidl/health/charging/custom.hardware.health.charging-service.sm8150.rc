@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: The halogenOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+service vendor.charge-limit-sm8150 /vendor/bin/hw/custom.hardware.health.charging-service.sm8150
+    class hal
+    user vendor_charge_limit
+    group vendor_charge_limit
