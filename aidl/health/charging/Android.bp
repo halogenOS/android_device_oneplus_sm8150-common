@@ -11,16 +11,5 @@ rust_binary {
     vintf_fragments: ["custom.hardware.health.charging-service.sm8150.xml"],
     crate_root: "src/main.rs",
     srcs: ["src/*.rs"],
-    rustlibs: [
-        "custom.hardware.health.charging-V1-rust",
-        "libandroid_logger",
-        "libbinder_rs",
-        "libkobject_uevent",
-        "liblibc",
-        "liblog_rust",
-        "libnetlink_sys",
-        "libsignal_hook",
-        "libthiserror",
-        "libtokio",
-    ],
+    rustlibs: ["libcharge_limit_hal"],
 }
