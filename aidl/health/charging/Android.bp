@@ -8,7 +8,7 @@ rust_binary {
     relative_install_path: "hw",
     vendor: true,
     init_rc: ["custom.hardware.health.charging-service.sm8150.rc"],
-    vintf_fragments: ["custom.hardware.health.charging-service.sm8150.xml"],
+    vintf_fragment_modules: ["custom.hardware.health.charging-service.xml"],
     crate_root: "src/main.rs",
     srcs: ["src/*.rs"],
     rustlibs: ["libcharge_limit_hal"],
