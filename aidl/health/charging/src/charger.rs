@@ -6,7 +6,7 @@
 
 use charge_limit_hal::{
     sysfs::{Attribute, Switch},
-    ChargeMode, Charger, Error,
+    ChargeMode, Charger, Error, SetReason,
 };
 
 /// The current that the fuel gauge measures through the battery, positive while the battery
@@ -35,7 +35,7 @@ impl Sm8150Charger {
 impl Charger for Sm8150Charger {
     /// Sets the charging switch and then the input, also when the charging switch fails, and
     /// returns the first error.
-    fn set(&mut self, mode: ChargeMode) -> Result<(), Error> {
+    fn set(&mut self, mode: ChargeMode, _reason: &SetReason) -> Result<(), Error> {
         // The charging switch has its new value before the input resumes, so leaving Drain for
         // Hold never charges in between. A failed charging switch never leaves the input
         // suspended.
